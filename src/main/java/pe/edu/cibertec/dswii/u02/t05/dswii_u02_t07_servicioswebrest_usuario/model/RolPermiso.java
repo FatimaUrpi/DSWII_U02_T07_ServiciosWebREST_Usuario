@@ -4,61 +4,80 @@
  */
 package pe.edu.cibertec.dswii.u02.t05.dswii_u02_t07_servicioswebrest_usuario.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
  * @author SUITE
  */
-public class RolPermiso {
-    
-   private Long id;
-   private Long idRol;
-    private Long idPermiso;
-    private LocalDate fechaAsignacion;
+public class RolPermiso implements Serializable{
+    public static final long serialVersionUID = 1L;
+  
+    private Long idRolPermiso;
+    private Rol id;
+    private Permiso idPermiso;   // Relación con Permiso  
+    private LocalDateTime fechaCreacion;
+    private LocalDateTime fechaActualizacion;
 
-    public RolPermiso(Long id, Long idRol, Long idPermiso, LocalDate fechaAsignacion) {
-        this.id = id;
-        this.idRol = idRol;
-        this.idPermiso = idPermiso;
-        this.fechaAsignacion = fechaAsignacion;
+    public RolPermiso() {
     }
 
-    public Long getId() {
+    public RolPermiso(Long idRolPermiso, Rol id, Permiso idPermiso) {
+        this.idRolPermiso = idRolPermiso;
+        this.id = id;
+        this.idPermiso = idPermiso;
+        this.fechaCreacion =  LocalDateTime.now();
+        this.fechaActualizacion =  this.fechaCreacion;
+    }
+
+    public Long getIdRolPermiso() {
+        return idRolPermiso;
+    }
+
+    public void setIdRolPermiso(Long idRolPermiso) {
+        this.idRolPermiso = idRolPermiso;
+    }
+
+    public Rol getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Rol id) {
         this.id = id;
     }
 
-    public Long getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(Long idRol) {
-        this.idRol = idRol;
-    }
-
-    public Long getIdPermiso() {
+    public Permiso getIdPermiso() {
         return idPermiso;
     }
 
-    public void setIdPermiso(Long idPermiso) {
+    public void setIdPermiso(Permiso idPermiso) {
         this.idPermiso = idPermiso;
     }
 
-    public LocalDate getFechaAsignacion() {
-        return fechaAsignacion;
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFechaAsignacion(LocalDate fechaAsignacion) {
-        this.fechaAsignacion = fechaAsignacion;
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public LocalDateTime getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     @Override
     public String toString() {
-        return "RolPermiso{" + "id=" + id + ", idRol=" + idRol + ", idPermiso=" + idPermiso + ", fechaAsignacion=" + fechaAsignacion + '}';
+        return "RolPermiso{" + "idRolPermiso=" + idRolPermiso + ", id=" + id + ", idPermiso=" + idPermiso + ", fechaCreacion=" + fechaCreacion + ", fechaActualizacion=" + fechaActualizacion + '}';
     }
+    
+    
+   
     
 }

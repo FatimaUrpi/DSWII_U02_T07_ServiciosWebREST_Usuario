@@ -4,23 +4,40 @@
  */
 package pe.edu.cibertec.dswii.u02.t05.dswii_u02_t07_servicioswebrest_usuario.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  *
  * @author SUITE
  */
-public class Usuario {
-    
+public class Usuario implements Serializable {
+     public static final long serialVersionUID = 1L;
+
+     
     private Long idUsuario;
     private String nombreUsuario;
     private String contrasena;
-    private boolean activo;
-    private LocalDate fechaActualizacion;
-    private List<Rol> roles;
+    private String email;
+    private Boolean activo;
+    private LocalDateTime fechaCreacion;
+    private LocalDateTime fechaActualizacion;
 
-    // Getters y setters
+    public Usuario() {
+    }
+
+    public Usuario(Long idUsuario, String nombreUsuario, String contrasena, String email, Boolean activo) {
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.contrasena = contrasena;
+        this.email = email;
+        this.activo = activo;
+        this.fechaCreacion =  LocalDateTime.now();
+        this.fechaActualizacion =  this.fechaCreacion;
+    }
+
     public Long getIdUsuario() {
         return idUsuario;
     }
@@ -45,28 +62,42 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public boolean isActivo() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getActivo() {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setActivo(Boolean activo) {
         this.activo = activo;
     }
 
-    public LocalDate getFechaActualizacion() {
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public LocalDateTime getFechaActualizacion() {
         return fechaActualizacion;
     }
 
-    public void setFechaActualizacion(LocalDate fechaActualizacion) {
+    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public List<Rol> getRoles() {
-        return roles;
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", email=" + email + ", activo=" + activo + ", fechaCreacion=" + fechaCreacion + ", fechaActualizacion=" + fechaActualizacion + '}';
     }
 
-    public void setRoles(List<Rol> roles) {
-        this.roles = roles;
-    }
-
+   
 }
